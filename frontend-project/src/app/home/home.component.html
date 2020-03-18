@@ -1,0 +1,20 @@
+<div class="container-fluid">
+    <div class="background"></div>
+    <div class="info">
+        <h2>TRACK YOUR SHIPMENT</h2>
+        <p>FreightHub – Europe's first digital freight forwarder</p>
+        <p>
+            We are your co-pilot: handle your global transports with our intuitive freight forwarding platform. You benefit from reliable processes, transparent data and an efficient supply chain. This simplifies the cooperation between your suppliers and employees.
+        </p>
+    </div>
+    <div class="track-box">
+        <p>Track your Shipment</p>
+        <div class="search-box">
+            <input type="text" placeholder="S1000" [(ngModel)]="trackingID" (keydown)="handleEnterKey($event)">
+            <div class="error" *ngIf="showError">Please enter a tracking ID</div>
+            <button (click)="getShipmentDetails()">Search</button>
+        </div>
+        <button [routerLink]="['../','shipments','getall']">SEE ALL SHIPMENTS</button>
+    </div>
+    <app-shipment [shipmentData]="shipmentData"></app-shipment>
+</div>

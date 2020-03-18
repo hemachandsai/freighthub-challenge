@@ -1,0 +1,28 @@
+Instruction to start the project:-
+    a)Through scripted process
+    1)Navigate to project directory and run the file startupscript.js with command node startupscript.js
+    2)Navigate to http://localhost:4200 to get to the web page
+
+    b)Through Manual installtion of packages
+    1)Navigate to folder frontend-project and do an npm install
+    2)Install angular cli with command npm install -g @angular/cli
+    3)Run ng serve to start up a local server
+    4)Navigate back to project dir and do an npm install for backend deps
+    5)Run npm start in backend folder.
+    6)Navigate to http://localhost:4200 to get to the web page
+
+
+
+Couples of Notes:-
+1)I had made sure to follow up all the instructions to score max points as per evalutaion criteria
+2)If anything is missing or needs any improvement, any feedback is utmost welcome
+3)I had not used CSS grid nor any external resposive design system like bootstrap grid. This choice was made intentionally as everyhting in my design scope
+  can be acheived with a 2d flex alignment
+4)Also please excuse me with the fact that i havent used react js and done with angular. If given some time i can master react too as it just another 
+ library(framework as an ecosystem of libraries) like angular with the same internal concepts made out of javascript such as virtual dom in case of react
+
+
+Live version:-
+
+A live version of this server is available at https://learner.ml
+Please dont hesitate to take a look at it as even that is deployed with the same code. thanks for this opportunity :))

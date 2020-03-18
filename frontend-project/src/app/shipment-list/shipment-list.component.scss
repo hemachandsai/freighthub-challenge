@@ -1,0 +1,51 @@
+.continer-fluid{
+    overflow: auto;
+}
+.container{
+    margin-top: 50px;
+    form{
+        margin-bottom: 10px !important;
+        display: flex;
+        justify-content: flex-end;
+
+    }
+    .pictorial-info{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        img{
+            width: 200px;
+            margin-bottom: 50px;
+        }
+        p{
+            font-size: 16px;
+            font-weight: bold;
+        }
+    }
+}
+a.disabled{
+    cursor: default;
+    opacity: 0.4;
+    &:hover{
+        border: 1px solid gray;
+        background: unset;
+    }
+}
+ul.pagination{
+    justify-content: center;
+}
+table{
+    th,.view-info{
+        white-space: nowrap;
+    }
+}
+@media (max-width: 992px){
+    .table-wrapper{
+        min-width: 930px;
+        overflow-x: scroll;
+    }
+    .container{
+        margin-left: unset;
+    }
+}

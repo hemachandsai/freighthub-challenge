@@ -1,0 +1,50 @@
+<div class="continer-fluid">
+    <div class="container">
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search Text" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="getMatchingShipments($event)">Search for Shipment</button>
+      </form>
+        <div class="table-wrapper">
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col" (click)="sort(1)">ID<i class="fa fa-fw fa-sort"></i></th>
+                    <th scope="col" (click)="sort(2)">NAME<i class="fa fa-fw fa-sort"></i></th>
+                    <th scope="col" (click)="sort(3)">ORIGIN<i class="fa fa-fw fa-sort"></i></th>
+                    <th scope="col" (click)="sort(4)">DESTINATION<i class="fa fa-fw fa-sort"></i></th>
+                    <th scope="col" (click)="sort(5)">TOTAL<i class="fa fa-fw fa-sort"></i></th>
+                    <th scope="col" (click)="sort(6)">STATUS<i class="fa fa-fw fa-sort"></i></th>
+                    <th scope="col" (click)="sort(7)">USERID<i class="fa fa-fw fa-sort"></i></th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody *ngIf="shipmentList">
+                  <tr *ngFor="let shipment of shipmentList;">
+                        <td>{{shipment.id}}</td>
+                        <td>{{shipment.name}}</td>            
+                        <td>{{shipment.origin}}</td>            
+                        <td>{{shipment.destination}}</td>            
+                        <td>{{shipment.total}}</td>            
+                        <td>{{shipment.status}}</td>            
+                        <td>{{shipment.userId}}</td>
+                        <td class="view-info"><a [routerLink]="['../../','shipment', shipment.id, 'edit']">View Info</a></td>
+                  </tr>
+                </tbody>
+              </table>
+              
+              <div class="pictorial-info" *ngIf="httpCall || shipmentList.length === 0">
+                <img src="../../assets/icons/magnify.svg" *ngIf="httpCall">
+                <p *ngIf="httpCall">Searching for results</p>
+                <img src="../../assets/icons/error.svg" *ngIf="!httpCall && shipmentList.length === 0">
+                <p *ngIf="!httpCall && shipmentList.length === 0"> No Results Found</p>
+              </div>
+        </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link"  [ngClass]="currentPage === 1 ? 'disabled' : 'active'" (click)="navigate('previous')">Previous</a></li>
+              <li class="page-item" *ngFor="let index of paginationIndexes;"><a class="page-link" (click)="navigate(index)">{{ index }}</a></li>
+              <li class="page-item"><a class="page-link" [ngClass]="lastPage === currentPage ? 'disabled' : 'active'" (click)="navigate('next')">Next</a></li>
+            </ul>
+          </nav>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+nav{
+    background: #231919a6 !important;
+    .navbar-brand{
+        margin-left: 100px;
+    }
+    a.nav-link{
+        color: white;
+    }
+    ul.navbar-nav{
+        margin-right: 100px !important;
+    }
+    .navbar-toggler{
+        color:rgba(255,255,255,.5);
+        border-color: rgba(255,255,255,.1);
+    }
+}
+@media (max-width: 576px) { 
+    nav{
+        .navbar-brand{
+            margin-left: 10px;
+        }
+    }
+    .navbar-collapse{
+        ul.navbar-nav{
+            margin-right: 0px !important;
+            text-align: center;
+        }
+    }
+    button{
+        display: inline;
+    }
+    .navbar-brand{
+        display: inline;
+    }
+}
+@media (max-width: 768px) { 
+    .navbar-collapse{
+        ul.navbar-nav{
+            text-align: center;
+        }
+    }
+ }
+

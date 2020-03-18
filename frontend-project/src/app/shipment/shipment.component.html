@@ -1,0 +1,95 @@
+    <div class="container">
+        <div class="info">
+            <h2>SHIPMENT TRACKING INFO FOR {{ searchId }}</h2>
+            <p>This page lets you track your cargo info and modify the shipment name</p>
+            <div class="info-text" *ngIf="!searchId">
+                PLEASE ENTER A TRACKING ID TO SEARCH FOR
+            </div>
+        </div>
+        <div class="shipment-info" *ngIf="shipmentInfo">
+            <div class="shipment-card">
+                <div class="head">ID</div>
+                <div class="body">{{shipmentInfo.id}}</div>
+            </div>
+            <div class="shipment-card">
+                <div class="head">NAME</div>
+                <div class="body"><input class="" [(ngModel)]="newShipmentNmae" /> <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" (click)="focusShipmentName($event)"></i>
+                </div>
+            </div>
+            <div class="shipment-card">
+                <div class="head">USERID</div>
+                <div class="body">{{shipmentInfo.userId}}</div>
+            </div>
+            <div class="break"></div>
+            <h5>CARGO INFO</h5>
+            <div class="break"></div>
+
+            <div class="shipment-card">
+                <div class="head">TYPE</div>
+                <div class="body" *ngFor="let item of shipmentInfo['cargo']">{{item.type}}</div>
+            </div>
+            <div class="shipment-card">
+                <div class="head">DESCRIPTION</div>
+                <div class="body" *ngFor="let item of shipmentInfo['cargo']">{{item.description}}</div>
+            </div>
+            <div class="shipment-card">
+                <div class="head">VOLUME</div>
+                <div class="body" *ngFor="let item of shipmentInfo['cargo']">{{item.volume}}</div>
+            </div>
+            
+            <div class="break"></div>
+            <h5>SHIPMENT INFO</h5>
+            <div class="break"></div>
+
+            <div class="shipment-card">
+                <div class="head">MODE</div>
+                <div class="body">{{shipmentInfo.mode}}</div>
+            </div>
+            <div class="shipment-card">
+                <div class="head">TYPE</div>
+                <div class="body">{{shipmentInfo.type}}</div>
+            </div>
+            <div class="shipment-card">
+                <div class="head">STATUS</div>
+                <div class="body">{{shipmentInfo.status}}</div>
+            </div>
+            <div class="shipment-card">
+                <div class="head">total</div>
+                <div class="body">{{shipmentInfo.total}}</div>
+            </div>
+            <div class="break"></div>
+            <h5>LOCATION INFO</h5>
+            <div class="break"></div>
+            <div class="shipment-card">
+                <div class="head">ORIGIN</div>
+                <div class="body">{{shipmentInfo.origin}}</div>
+            </div>            <div class="shipment-card">
+                <div class="head">DESTINATION</div>
+                <div class="body">{{shipmentInfo.destination}}</div>
+            </div>
+        </div>
+        <ng-container *ngIf="!shipmentInfo && searchingData">
+            <div class="searching">
+                <img src="../../assets/icons/magnify.svg">
+                <p>Please hold on while we are getting data for shipment {{searchId}}</p>
+            </div>
+        </ng-container>
+        
+        <ng-container *ngIf="!shipmentInfo && searchingData === false">
+            <div class="searching">
+                <img src="../../assets/icons/sad.svg">
+                <p>Sorry no results found with the ID {{searchId}}</p>
+            </div>
+        </ng-container>
+        
+        <ng-container *ngIf="!shipmentInfo && searchingData === false && errorReturned">
+            <div class="searching">
+                <img src="../../assets/icons/error.svg">
+                <p>Error while retrieving results for shipment {{searchId}}</p>
+            </div>
+        </ng-container>
+        <div class="edit-block" *ngIf="newShipmentNmae != oldShipmentName">
+            <button (click)="changeShipmentName()">SAVE</button>   
+            <div class="text-info" *ngIf="textMessage"> {{ textMessage }}</div>         
+        </div>
+    </div>
